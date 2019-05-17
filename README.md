@@ -21,14 +21,12 @@
 
 # User Stories
 
-|    |                                                                                      | Acceptance Criteria                                                             |
-|----|--------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | 1  | As a user, I want to see a list of categories
 - need uitableview -> data source -> .json with categories
 - need Category :Decodable struct to represent each category - properties - id: String, updatedAt: Date, slug: String, customModuleEid: String, eid: String, title: String, description: String, _v: Int, active: Bool, createdAt: Date
 - uitableviewcells to view each category - need model and custom controller
 | The list items must link to the resources page                                  |
-- “Resources” uibutton in each uitableviewcell
+- “Resources” UIButton in each Category UITableViewCell, with its respective view model 
 
 
 | 2  | As a user, I want to see the resources inside a category
