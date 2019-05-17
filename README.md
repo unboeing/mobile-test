@@ -25,6 +25,7 @@
 - need uitableview -> data source -> .json with categories
 - need Category :Decodable struct to represent each category - properties - id: String, updatedAt: Date, slug: String, customModuleEid: String, eid: String, title: String, description: String, _v: Int, active: Bool, createdAt: Date
 - uitableviewcells to view each category - need model and custom controller
+
 | The list items must link to the resources page                                  |
 - “Resources” UIButton in each Category UITableViewCell, with its respective view model 
 
@@ -37,6 +38,7 @@
 - need ContactInfo :Decodable struct - properties: website: NSURL, email: String, phoneNumber: String, faxNumber: String?, tollFree: String?, freeText: String?
 - need SocialMedia :Decodable struct - properties: youtubeChannel: NSURL?, twitter: NSURL?, facebook: NSURL? 
 - each Resource object will be displayed in a UITableViewCell containing various sections for object properties; in the case of bizHours, contactInfo and addresses, the sections will be UITableViews themselves, with scrolling disabled and custom UITableViewCells
+
 | The list items must link to the details page                                    |
 - “Details” UIButton in each UITableViewCell
 
@@ -46,11 +48,13 @@
 - segues from the initial view upon the user tapping on the "Details" UIButton of one of the custom UITableViewCells for each category
 - at segue the relevant details are passed in String format onto this DetailsView's view model(?) or viewController class for easy display (maybe possibilities/requirements for HTML parsing)
 - also must contain “Dismiss” button, probably default with overarching UINavigationController
+
 | The description is HTML, but the what you see on the screen must be text        |
 - contains a UITextView Properly formatted with the description of the category, accessible from the initial view's category UITableViewCells 
 
 | 4  | As a user, I want to sort the list of resources alphabetically
 - “Sort” UIButton. Assuming it’s the “Search” button from mockup
+
 | When I tap on the sort button, the list should sort from A-Z                    |
 - implies the table view displays the data in the original order initially
 - ResourcesUIViewController should contain sorted: Bool = false
@@ -58,6 +62,7 @@
 
 | 5  | When I tap on it a second time, it should sort the list from Z-A  
 - ResourceUIViewController should contain sortedUp: Bool? = nil, also change above to sorted: bool = false { didSet {sortedUp = true} } 
+
 | As a user, I want to send an email by tapping on a resource email               |
 - create sendEmail UIButton inside email UITableViewCell in the contactInfo section of Resource UITableViewCell
 
@@ -65,6 +70,7 @@
 | 6  | It should open the email without leaving the app  
 - need new UIView for email composition, with its own viewmodel/class which animates from the right in the same view by the user tapping sendEmail Button described above
 - this EmailUIView viewmodel/class will have a UITextField for the adresee, a UITextField for the Subject, a UITextField for any CC:, a UITextView for the message, a "Send" UIButton, a "Save as Draft" UIButton, a "Cancel" UIButton 
+
 | As a user, I want to call one of the phone numbers on the resource details page |
 - create callNumber UIButton inside each UITableViewCell of the contactInfo section of Resource UITableViewCell that is displaying a phone number
 - create associate callNumberTapped(sender: UIButton) @IBAction inside the corersponding viewmodel of a Resource UITableViewCell that is displaying a phone number
@@ -77,6 +83,7 @@
 
 | 8  | As a user, I want to open a web link without leaving the app 
 - need new UIView to display a WKWebView and the necessary controls for web browsing: an address bar?, a Back UIButton?, a Forward UIButton?, a Dismiss UIButton
+
 | It should open a web browser without leaving the app                            |
 - since the app requres only 3 pages, we have to bring another UIView from offscreen to display the web browser described above, achievable with constraint @IBOutlets and AutoLayout in the ResourcesUIViewController, overlaid on top of the ResourcesUITableView and disabling the normal functinos of ResourcesUIViewController, regainable at dismissWebBrowserTapped(sender: UIButton) @IBAction 
 
